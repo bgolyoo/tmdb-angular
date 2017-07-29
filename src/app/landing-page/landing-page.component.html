@@ -1,0 +1,13 @@
+<section id="Landing_page">
+  <div class="welcome-text">
+    Welcome to a demo implementation of The Movie DB. Please provide an API key to continue!
+  </div>
+  <form #apiForm="ngForm" (ngSubmit)="onSubmit()">
+    <input type="text" id="apiKey" name="apiKey" [(ngModel)]="apiKey" required/>
+    <button type="submit" [disabled]="apiForm.form.invalid">Submit</button>
+  </form>
+  <div class="support">
+    Check out the official TMDB
+    <a href="https://www.themoviedb.org/documentation/api">documentation</a> on how to get a key!
+  </div>
+</section>
