@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ApiKeyGuard } from './api-key/api-key.guard';
+import { ApiKeyGuard } from './shared/services/api-key/api-key.guard';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: 'app/landing-page/landing-page.module#LandingPageModule',
+    redirectTo: 'discover',
     pathMatch: 'full'
+  },
+  {
+    path: 'api-key',
+    loadChildren: 'app/api-key/api-key.module#ApiKeyModule'
   },
   {
     path: 'discover',

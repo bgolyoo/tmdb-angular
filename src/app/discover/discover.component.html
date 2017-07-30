@@ -1,3 +1,5 @@
-<p>
-  discover works!
-</p>
+<div *ngIf="response">
+  <div *ngFor="let result of response.results">
+    {{result.title}}
+  </div>
+</div>

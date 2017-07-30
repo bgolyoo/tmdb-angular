@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiKeyService } from '../api-key/api-key.service';
+import { ApiKeyService } from '../shared/services/api-key/api-key.service';
 
 @Component({
-  selector: 'app-landing-page',
-  templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss']
+  selector: 'app-api-key',
+  templateUrl: './api-key.component.html',
+  styleUrls: ['./api-key.component.scss']
 })
-export class LandingPageComponent {
+export class ApiKeyComponent {
 
   public apiKey: string;
 

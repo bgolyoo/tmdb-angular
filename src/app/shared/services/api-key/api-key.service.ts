@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiKeyService {
 
-  private storageKey = 'API_KEY';
+  private storageKey = 'TMDB_API_KEY';
 
   get apiKey(): string {
     const apiKey = localStorage.getItem(this.storageKey);

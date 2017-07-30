@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TmdbService } from '../tmdb/tmdb.service';
+import { TmdbService } from '../shared/services/tmdb/tmdb.service';
+import { ApiKeyService } from '../shared/services/api-key/api-key.service';
 import { DiscoverResponse } from '../shared/classes/discover-response';
+import { DiscoverQuery } from '../shared/classes/discover-query';
 
 @Component({
   selector: 'app-discover',
@@ -9,13 +11,31 @@ import { DiscoverResponse } from '../shared/classes/discover-response';
 })
 export class DiscoverComponent implements OnInit {
 
-  constructor(private tmdbService: TmdbService) { }
+  public response: DiscoverResponse;
+  public query: DiscoverQuery;
+
+  constructor(private tmdbService: TmdbService, private apiKeyService: ApiKeyService) { }
 
   ngOnInit() {
-    this.tmdbService.call().subscribe(
-      (resp: DiscoverResponse) => console.log(resp),
+    this.initQuery();
+    const defaultQuery: DiscoverQuery = {
+      api_key: this.apiKeyService.apiKey,
+      language: 'en-US',
+      sort_by: 'popularity.desc',
+      include_adult: false,
+      include_video: false,
+      page: 1
+    };
+    this.tmdbService.discover(this.query, 'movie').subscribe(
+      (resp: DiscoverResponse) => this.response = resp,
       error => console.error(error)
     );
+  }
+
+  private initQuery(): void {
+    this.query = {
+      api_key: this.apiKeyService.apiKey
+    };
   }
 
 }

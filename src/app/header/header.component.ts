@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiKeyService } from '../api-key/api-key.service';
+import { ApiKeyService } from '../shared/services/api-key/api-key.service';
 
 @Component({
   selector: 'app-header',

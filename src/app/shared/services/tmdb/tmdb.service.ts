@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ApiKeyService } from '../api-key/api-key.service';
-import { DiscoverResponse } from '../shared/classes/discover-response';
+import { DiscoverResponse } from '../../classes/discover-response';
+import { DiscoverQuery } from '../../classes/discover-query';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -15,8 +16,8 @@ export class TmdbService {
 
   constructor(private http: Http, private as: ApiKeyService) { }
 
-  public call(): Observable<DiscoverResponse> {
-    return this.http.get(`${this.baseUrl}${this.discoverUrl}/movie?api_key=${this.as.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
+  public discover(query: DiscoverQuery, type: string): Observable<DiscoverResponse> {
+    return this.http.get(`${this.baseUrl}${this.discoverUrl}/${type}${DiscoverQuery.getQueryString(query)}`)
       .map(resp => resp.json());
   }
 

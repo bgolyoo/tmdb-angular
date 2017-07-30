@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingPageComponent } from './landing-page.component';
+import { ApiKeyComponent } from './api-key.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent,
+    component: ApiKeyComponent,
     pathMatch: 'full'
   }
 ];
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LandingPageRoutingModule { }
+export class ApiKeyRoutingModule { }
