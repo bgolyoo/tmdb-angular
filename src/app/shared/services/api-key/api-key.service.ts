@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class ApiKeyService {
 
-  private storageKey = 'TMDB_API_KEY';
+  public apiKeyChanged: EventEmitter<string> = new EventEmitter();
+  private apiKeyStorageKey = 'TMDB_API_KEY';
 
   get apiKey(): string {
-    const apiKey = localStorage.getItem(this.storageKey);
+    const apiKey = localStorage.getItem(this.apiKeyStorageKey);
     return apiKey ? apiKey : undefined;
   }
 
   set apiKey(key: string) {
-    localStorage.setItem(this.storageKey, key);
+    localStorage.setItem(this.apiKeyStorageKey, key);
+    this.apiKeyChanged.emit(key);
   }
 
   constructor() { }

@@ -14,7 +14,7 @@ export class DiscoverComponent implements OnInit {
   public response: DiscoverResponse;
   public query: DiscoverQuery;
 
-  constructor(private tmdbService: TmdbService, private apiKeyService: ApiKeyService) { }
+  constructor(private tmdb: TmdbService, private apiKeyService: ApiKeyService) { }
 
   ngOnInit() {
     this.initQuery();
@@ -26,10 +26,14 @@ export class DiscoverComponent implements OnInit {
       include_video: false,
       page: 1
     };
-    this.tmdbService.discover(this.query, 'movie').subscribe(
+    this.tmdb.discover(this.query, 'movie').subscribe(
       (resp: DiscoverResponse) => this.response = resp,
       error => console.error(error)
     );
+  }
+
+  public getPoster(posterPath): string {
+    return this.tmdb.images('w500', posterPath);
   }
 
   private initQuery(): void {
