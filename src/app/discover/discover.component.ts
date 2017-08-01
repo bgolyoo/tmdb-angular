@@ -36,6 +36,17 @@ export class DiscoverComponent implements OnInit {
     return this.tmdb.images('w500', posterPath);
   }
 
+  public getIconForRating(rating: number): string {
+    const scaledRating = rating * 10;
+    if ( scaledRating <= 33) {
+      return 'fa fw fa-frown-o';
+    } else if (scaledRating <= 66) {
+      return 'fa fw fa-meh-o';
+    } else {
+      return 'fa fw fa-smile-o';
+    }
+  }
+
   private initQuery(): void {
     this.query = {
       api_key: this.apiKeyService.apiKey

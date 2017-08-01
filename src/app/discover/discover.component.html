@@ -1,9 +1,16 @@
 <div class="container">
   <div *ngIf="response" class="row">
-    <div *ngFor="let result of response.results" class="col-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div *ngFor="let result of response.results" class="col-12 col-sm-12 col-md-12 col-lg-6">
       <section id="Result" [style.background-image]="'url(' + getPoster(result.backdrop_path) + ')'">
         <div class="details">
-          {{result.title}}
+          <div class="row">
+            <div class="col-10">{{result.title}}</div>
+            <div class="col-2">
+              <i [class]="getIconForRating(result.vote_average)"></i>
+              {{result.vote_average}}
+            </div>
+            <div class="col-12">{{result.release_date}}</div>
+          </div>
         </div>
       </section>
     </div>
