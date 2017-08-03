@@ -3,6 +3,7 @@ import { TmdbService } from '../shared/services/tmdb/tmdb.service';
 import { ApiKeyService } from '../shared/services/api-key/api-key.service';
 import { DiscoverResponse } from '../shared/classes/discover-response';
 import { DiscoverQuery } from '../shared/classes/discover-query';
+import { Genre } from '../shared/classes/genre';
 
 @Component({
   selector: 'app-discover',
@@ -12,45 +13,32 @@ import { DiscoverQuery } from '../shared/classes/discover-query';
 export class DiscoverComponent implements OnInit {
 
   public response: DiscoverResponse;
-  public query: DiscoverQuery;
+  private genres: Array<Genre>;
+  private searchQuery: DiscoverQuery;
 
   constructor(private tmdb: TmdbService, private apiKeyService: ApiKeyService) { }
 
   ngOnInit() {
-    this.initQuery();
-    const defaultQuery: DiscoverQuery = {
-      api_key: this.apiKeyService.apiKey,
-      language: 'en-US',
-      sort_by: 'popularity.desc',
-      include_adult: false,
-      include_video: false,
-      page: 1
+    this.initSearchQuery();
+    this.initGenres();
+    this.search();
+  }
+
+  private initGenres(): void {
+    this.tmdb.genres.subscribe((genres: Array<Genre>) => this.genres = genres);
+  }
+
+  private initSearchQuery(): void {
+    this.searchQuery = {
+      api_key: this.apiKeyService.apiKey
     };
-    this.tmdb.discover(this.query, 'movie').subscribe(
+  }
+
+  private search(): void {
+    this.tmdb.discover(this.searchQuery, 'movie').subscribe(
       (resp: DiscoverResponse) => this.response = resp,
       error => console.error(error)
     );
-  }
-
-  public getPoster(posterPath): string {
-    return this.tmdb.images('w500', posterPath);
-  }
-
-  public getIconForRating(rating: number): string {
-    const scaledRating = rating * 10;
-    if ( scaledRating <= 33) {
-      return 'fa fw fa-frown-o';
-    } else if (scaledRating <= 66) {
-      return 'fa fw fa-meh-o';
-    } else {
-      return 'fa fw fa-smile-o';
-    }
-  }
-
-  private initQuery(): void {
-    this.query = {
-      api_key: this.apiKeyService.apiKey
-    };
   }
 
 }
