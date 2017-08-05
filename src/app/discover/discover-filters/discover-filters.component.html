@@ -1,0 +1,11 @@
+<section id="Filters">
+  <form [formGroup]="filterForm">
+    <div class="row">
+      <div class="col-12">
+        <select class="form-control" formControlName="sort_by">
+          <option *ngFor="let sortby of getSortByValues()">{{ sortby }}</option>
+      </select>
+      </div>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,17 @@
+#Discover {
+  .container {
+    background-color: #d1d1d1;
+    margin: 30px auto;
+    border-radius: 4px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #Discover {
+    .container {
+      background-color: #d1d1d1;
+      margin: 0 auto;
+      border-radius: 0;
+    }
+  }
+}

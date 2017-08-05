@@ -21,7 +21,6 @@ export class DiscoverComponent implements OnInit {
   ngOnInit() {
     this.initSearchQuery();
     this.initGenres();
-    this.search();
   }
 
   private initGenres(): void {
@@ -39,6 +38,11 @@ export class DiscoverComponent implements OnInit {
       (resp: DiscoverResponse) => this.response = resp,
       error => console.error(error)
     );
+  }
+
+  public onFilterChange(filters: DiscoverQuery): void {
+    this.searchQuery = filters;
+    this.search();
   }
 
 }
