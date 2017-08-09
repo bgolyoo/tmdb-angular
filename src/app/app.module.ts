@@ -10,6 +10,7 @@ import { HeaderModule } from './header/header.module';
 import { ApiKeyGuard } from './shared/services/api-key/api-key.guard';
 import { ApiKeyService } from './shared/services/api-key/api-key.service';
 import { TmdbService } from './shared/services/tmdb/tmdb.service';
+import { SearchService } from './shared/services/tmdb/search/search.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TmdbService } from './shared/services/tmdb/tmdb.service';
   providers: [
     ApiKeyGuard,
     ApiKeyService,
-    TmdbService
+    TmdbService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })
