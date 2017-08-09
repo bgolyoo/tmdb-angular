@@ -1,4 +1,4 @@
-export class DiscoverResponseResult {
+export class MovieResult {
 
     poster_path: string | null;
     adult: boolean;
@@ -6,6 +6,7 @@ export class DiscoverResponseResult {
     release_date: string;
     genre_ids: Array<number>;
     id: number;
+    media_type: string;
     original_title: string;
     original_language: string;
     title: string;

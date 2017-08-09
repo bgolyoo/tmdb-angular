@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DiscoverResponseResult } from '../../shared/classes/discover-response-result';
+import { MovieResult } from '../../shared/classes/movie-result';
 import { TmdbService } from '../../shared/services/tmdb/tmdb.service';
 import { Genre } from '../../shared/classes/genre';
 
@@ -10,7 +10,7 @@ import { Genre } from '../../shared/classes/genre';
 })
 export class DiscoverResultComponent {
 
-  @Input() result: DiscoverResponseResult;
+  @Input() result: MovieResult;
 
   constructor(private tmdb: TmdbService) { }
 

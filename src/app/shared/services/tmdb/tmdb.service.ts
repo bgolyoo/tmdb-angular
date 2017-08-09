@@ -43,7 +43,10 @@ export class TmdbService {
     this.http.get(`${this.baseUrl}${this.configurationUrl}?api_key=${this.as.apiKey}`)
       .map(resp => resp.json())
       .subscribe(
-      (resp: Configuration) => this.conf = resp,
+      (configuration: Configuration) => {
+        this.conf = configuration;
+        window['config'] = configuration;
+      },
       error => console.error(error)
       );
   }
