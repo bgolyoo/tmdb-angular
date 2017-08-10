@@ -14,9 +14,10 @@
       </div>
       <div class="col-3">
         <div class="select-container">
-          <select [(ngModel)]="searchType" (change)="onSearchChange()">
+          <app-single-select [(ngModel)]="searchType" [options]="getSearchTypes()"></app-single-select>
+          <!-- <select [(ngModel)]="searchType" (change)="onSearchChange()">
             <option *ngFor="let searchType of getSearchTypes()" [value]="searchType">{{ searchType }}</option>
-          </select>
+          </select> -->
         </div>
       </div>
     </div>

@@ -1,0 +1,38 @@
+#Single_select {
+  position: relative;
+  cursor: pointer;
+  .select-body {
+    width: 100%;
+    margin: 6px;
+    height: 30px;
+    background-color: #f4f4f4;
+    text-align: center;
+    &:hover,
+    &.active {
+      background-color: #e5e5e5;
+    }
+    .select-body-text {
+      vertical-align: sub;
+    }
+  }
+  .select-dropdown {
+    position: absolute;
+    z-index: 20;
+    background-color: #f4f4f4;
+    top: 30px;
+    left: 6px;
+    width: 100%;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+
+      li {
+          &:hover {
+            background-color: #e5e5e5;
+          }
+      }
+    }
+  }
+}

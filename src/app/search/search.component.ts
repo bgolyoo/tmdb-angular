@@ -26,30 +26,34 @@ import 'rxjs/add/operator/distinctUntilChanged';
 })
 export class SearchComponent implements OnInit {
 
-  public searchType = SearchType[SearchType.Multi];
   public results: Array<CollectionResult | CompanyResult | KeywordResult | MovieResult | PeopleResult | TvShowResult> = [];
   public isResultsOpen: boolean;
+  private _searchType: string;
   private searchForm: FormGroup;
   private subscriptions: Array<Subscription> = [];
 
+  get searchType(): string {
+    return this._searchType;
+  }
+
+  set searchType(value: string) {
+    if (this._searchType) {
+      this._searchType = value;
+      this.onSearchChange();
+    } else {
+      this._searchType = value;
+    }
+  }
+
   constructor(private formBuilder: FormBuilder, private tmdb: TmdbService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.initSearchType();
     this.initSearchForm();
   }
 
   public getSearchTypes(): Array<string> {
     return Utils.getEnumValues(SearchType);
-  }
-
-  private initSearchForm(): void {
-    this.searchForm = this.formBuilder.group({
-      query: ['', Validators.required]
-    });
-    this.subscriptions.push(this.searchForm.valueChanges
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .subscribe(() => this.onSearchChange()));
   }
 
   public onSearchChange(): void {
@@ -65,8 +69,8 @@ export class SearchComponent implements OnInit {
         SearchMovieResponse |
         SearchPeopleResponse |
         SearchTvShowResponse) => {
-          this.isResultsOpen = true;
-          this.results = searchResponse.results;
+        this.isResultsOpen = true;
+        this.results = searchResponse.results;
       },
       error => console.error(error)
     );
@@ -78,8 +82,21 @@ export class SearchComponent implements OnInit {
 
   public clearSearch(): void {
     this.searchForm.get('query').reset();
-    console.log(this.searchForm.value);
     this.results = [];
+  }
+
+  private initSearchType(): void {
+    this.searchType = SearchType[SearchType.Multi];
+  }
+
+  private initSearchForm(): void {
+    this.searchForm = this.formBuilder.group({
+      query: ['', Validators.required]
+    });
+    this.subscriptions.push(this.searchForm.valueChanges
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .subscribe(() => this.onSearchChange()));
   }
 
 }
