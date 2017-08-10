@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderModule } from './header/header.module';
+import { SearchModule } from './search/search.module';
 
 import { ApiKeyGuard } from './shared/services/api-key/api-key.guard';
 import { ApiKeyService } from './shared/services/api-key/api-key.service';
@@ -20,7 +21,8 @@ import { SearchService } from './shared/services/tmdb/search/search.service';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    HeaderModule
+    HeaderModule,
+    SearchModule
   ],
   providers: [
     ApiKeyGuard,

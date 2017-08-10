@@ -1,0 +1,30 @@
+<section id="Search">
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        <i class="fa fw fa-search"></i>
+        <form [formGroup]="searchForm">
+          <div class="input-container" [class.valid]="searchForm.get('query').valid">
+            <input type="text" placeholder="Search for movies, tv shows, people..." formControlName="query" autocomplete="off">
+          </div>
+        </form>
+        <i *ngIf="isResultsOpen !== undefined && results.length" [ngClass]="{'fa fw': true, 'fa-angle-double-down': !isResultsOpen, 'fa-angle-double-up': isResultsOpen}"
+          (click)="toggleResults()"></i>
+        <i *ngIf="searchForm.get('query').valid" class="fa fw fa-close" (click)="clearSearch()"></i>
+      </div>
+      <div class="col-3">
+        <div class="select-container">
+          <select [(ngModel)]="searchType" (change)="onSearchChange()">
+            <option *ngFor="let searchType of getSearchTypes()" [value]="searchType">{{ searchType }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="Search_results" [class.open]="isResultsOpen">
+  <div *ngFor="let result of results" class="result">
+    <span *ngIf="result.name">{{ result.name }}</span>
+    <span *ngIf="result.title">{{ result.title }}</span>
+  </div>
+</section>

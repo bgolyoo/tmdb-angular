@@ -10,4 +10,9 @@ export class Utils {
         return `${queryParams.join('&')}`;
     }
 
+    public static getEnumValues(enumObj: any): Array<string> {
+        const keys = Object.keys(enumObj);
+        return keys.slice(keys.length / 2);
+    }
+
 }

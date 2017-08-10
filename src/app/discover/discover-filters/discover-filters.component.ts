@@ -5,6 +5,7 @@ import { ApiKeyService } from '../../shared/services/api-key/api-key.service';
 import { TmdbService } from '../../shared/services/tmdb/tmdb.service';
 import { SortBy } from '../../shared/enums/sort-by.enum';
 import { Genre } from '../../shared/classes/genre';
+import { Utils } from '../../shared/classes/utils';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -30,14 +31,12 @@ export class DiscoverFiltersComponent implements OnInit {
   }
 
   public getSortByValues(): Array<string> {
-    const keys = Object.keys(SortBy);
-    return keys.slice(keys.length / 2);
+    return Utils.getEnumValues(SortBy);
   }
 
   public getGenres(): void {
     this.subscriptions.push(this.tmdb.genres.subscribe((genres: Array<Genre>) => {
       this.genres = genres;
-      console.log(this.genres);
     }));
   }
 
