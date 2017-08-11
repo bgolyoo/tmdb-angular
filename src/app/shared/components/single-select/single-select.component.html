@@ -1,7 +1,4 @@
-<!-- <select [(ngModel)]="selectedOption" (blur)="onBlur()">
-  <option *ngFor="let option of options" [value]="option">{{ option }}</option>
-</select> -->
-<section id="Single_select">
+<section id="Single_select" appOutsideClick (clickOutside)="closeDropdown()">
   <div class="select-body" [class.active]="isDropdownOpen" (click)="toggleDropdown()">
     <span class="select-body-text">{{ selectedOption }} <i [ngClass]="{'fa fa-fw': true, 'fa-angle-down': !isDropdownOpen, 'fa-angle-up': isDropdownOpen}"></i></span>
   </div>

@@ -79,8 +79,12 @@ export class SingleSelectComponent implements OnChanges, ControlValueAccessor {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  public select(option: string): void {
+  public closeDropdown(): void {
     this.isDropdownOpen = false;
+  }
+
+  public select(option: string): void {
+    this.closeDropdown();
     this.selectedOption = option;
   }
 
