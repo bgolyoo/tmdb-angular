@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { Component, OnChanges, Input, forwardRef, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -15,10 +15,11 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['./single-select.component.scss'],
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class SingleSelectComponent implements OnInit, ControlValueAccessor {
+export class SingleSelectComponent implements OnChanges, ControlValueAccessor {
 
-  @Input() selected = '';
   @Input() options: Array<string> = [];
+  public isDropdownOpen = false;
+  private _options: Array<string> = [];
   private _selection: string;
 
   // Placeholders for the callbacks which are later providesd by the Control Value Accessor
@@ -27,8 +28,16 @@ export class SingleSelectComponent implements OnInit, ControlValueAccessor {
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.selectedOption = this.selected;
+  ngOnChanges(changes?: SimpleChanges): void {
+    this.initSelectOptions();
+  }
+
+  get selectOptions(): Array<string> {
+    return this._options;
+  }
+
+  set selectOptions(value: Array<string>) {
+    this._options = value;
   }
 
   // get accessor
@@ -64,6 +73,22 @@ export class SingleSelectComponent implements OnInit, ControlValueAccessor {
   // From ControlValueAccessor interface
   registerOnTouched(fn: any): void {
     this.onTouchedCallback = fn;
+  }
+
+  public toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  public select(option: string): void {
+    this.isDropdownOpen = false;
+    this.selectedOption = option;
+  }
+
+  private initSelectOptions(): void {
+    if (this.selectedOption) {
+      this.selectOptions = this.options.slice();
+      this.selectOptions.splice(this.selectOptions.findIndex(option => option === this.selectedOption), 1);
+    }
   }
 
 }
