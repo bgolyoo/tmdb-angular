@@ -1,0 +1,34 @@
+<section id="Search_TvShow_result">
+  <div *ngIf="result.media_type" class="media-type">
+    <span><i class="fa fw fa-television"></i> {{ result.media_type | titlecase }}</span>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <img class="poster" [src]="getImage(result.poster_path)" onerror="this.onerror=null;this.src='assets/images/not_found_tv_show_w154.png';">
+    </div>
+    <div class="col-8">
+      <span *ngIf="result.original_name" class="title" appHighlight [search]="query" [text]="result.original_name" [classToApply]="'title-highlight'"></span>
+      <span *ngIf="result.first_air_date" class="date">{{ result.first_air_date }}</span>
+      <div *ngIf="result.overview" class="overview-container">
+        <div class="overview-text">
+          <span>{{ result.overview | truncateWords: overviewWordLimit }}</span>
+        </div>
+        <div *ngIf="initialOverviewWordLimit < result.overview.split(' ').length" class="show-all" (click)="toggleOverview()">
+          <span *ngIf="isOverviewOpen"><i class="fa fw fa-angle-double-up"></i> Show less</span>
+          <span *ngIf="!isOverviewOpen"><i class="fa fw fa-angle-double-down"></i> Show all</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="detail-block">
+        <app-star-rating *ngIf="result.vote_average" [rating]="result.vote_average" [outOf]="10" [stars]="5"></app-star-rating>
+      </div>
+      <div class="detail-block">
+        <span class="vote-counts"><i class="fa fa-fw fa-heart"></i> {{ result.vote_count ? result.vote_count: 0 }}</span>
+      </div>
+      <div class="detail-block">
+        <span *ngFor="let genre of getGenres(result.genre_ids)" class="badge badge-default genre">{{ genre }}</span>
+      </div>
+    </div>
+  </div>
+</section>

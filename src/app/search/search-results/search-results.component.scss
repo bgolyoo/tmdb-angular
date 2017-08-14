@@ -1,0 +1,38 @@
+$bg-color-light: #fefefe;
+$border: #e6e6e6;
+$border-hover: #8f8f8f;
+$load-more: #8f8f8f;
+$load-more-hover: #616161;
+#Search_results {
+  position: absolute;
+  background-color: $bg-color-light;
+  z-index: 10;
+  width: 100%;
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  -moz-transition: max-height 0.15s ease-out;
+  -o-transition: max-height 0.15s ease-out;
+  -webkit-transition: max-height 0.15s ease-out;
+  overflow: hidden;
+  &.open {
+    max-height: 500000px;
+    transition: max-height 0.25s ease-in;
+    -moz-transition: max-height 0.25s ease-in;
+    -o-transition: max-height 0.25s ease-in;
+    -webkit-transition: max-height 0.25s ease-in;
+  }
+  .result {
+    margin-top: 20px;
+  }
+  .load-more {
+    text-align: center;
+    border-top: 1px solid $border;
+    padding: 10px;
+    color: $load-more;
+    cursor: pointer;
+    &:hover {
+      border-top: 1px solid $border-hover;
+      color: $load-more-hover;
+    }
+  }
+}

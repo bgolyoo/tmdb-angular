@@ -3,7 +3,8 @@
 body {
   font-family: 'Quicksand', sans-serif;
   background-color: #545454;
-  input {
+  input[type='text'] {
+    font-family: 'Quicksand', sans-serif;
     &::-webkit-input-placeholder {
       font-family: 'Quicksand', sans-serif;
     }
@@ -16,5 +17,11 @@ body {
     &:-moz-placeholder {
       font-family: 'Quicksand', sans-serif;
     }
+  }
+}
+
+#Search_results {
+  .title-highlight {
+    font-weight: 700;
   }
 }

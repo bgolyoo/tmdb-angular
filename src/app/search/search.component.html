@@ -5,7 +5,7 @@
         <i class="fa fw fa-search"></i>
         <form [formGroup]="searchForm">
           <div class="input-container" [class.valid]="searchForm.get('query').valid">
-            <input type="text" placeholder="Search for movies, tv shows, people..." formControlName="query" autocomplete="off">
+            <input type="text" [placeholder]="getPlaceholder(searchType)" formControlName="query" autocomplete="off">
           </div>
         </form>
         <i *ngIf="isResultsOpen !== undefined && results.length" [ngClass]="{'fa fw': true, 'fa-angle-double-down': !isResultsOpen, 'fa-angle-double-up': isResultsOpen}"
@@ -20,9 +20,4 @@
     </div>
   </div>
 </section>
-<section id="Search_results" [class.open]="isResultsOpen">
-  <div *ngFor="let result of results" class="result">
-    <span *ngIf="result.name">{{ result.name }}</span>
-    <span *ngIf="result.title">{{ result.title }}</span>
-  </div>
-</section>
+<app-search-results [query]="searchForm.get('query').value" [results]="results" [isResultsOpen]="isResultsOpen" [searchType]="searchType" [currentPage]="searchForm.get('page').value" [totalPages]="totalPages" (loadMore)="loadMore()"></app-search-results>

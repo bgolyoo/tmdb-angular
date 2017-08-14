@@ -15,4 +15,12 @@ export class Utils {
         return keys.slice(keys.length / 2);
     }
 
+    public static escapeStringRegexp(str: string): string {
+        const matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g;
+        if (typeof str !== 'string') {
+            throw new TypeError('Expected a string');
+        }
+        return str.replace(matchOperatorsRe, '\\$&');
+    }
+
 }

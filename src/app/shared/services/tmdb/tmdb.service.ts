@@ -79,7 +79,7 @@ export class TmdbService {
   }
 
   public images(size: string, filePath: string): string {
-    return `${this.conf.images.base_url}/${size}/${filePath}`;
+    return `${this.conf.images.base_url}${size}/${filePath}`;
   }
 
   public getGenres(): Observable<any> {
@@ -113,6 +113,23 @@ export class TmdbService {
 
   public searchTvShow(queryObj: SearchTvShowQuery): Observable<SearchTvShowResponse> {
     return this.searchService.searchTvShow(this.baseUrl, Utils.getQueryString(queryObj));
+  }
+
+  public getGenreLabels(genres: Array<number>): Array<string> {
+    const genreLabels: Array<string> = [];
+    if (genres && genres.length) {
+      this.genres.subscribe(
+        (genresEl: Array<Genre>) => {
+          genres.forEach((genre: number) => {
+            const foundGenre: Genre = genresEl.find((genreEl: Genre) => genreEl.id === genre);
+            if (foundGenre) {
+              genreLabels.push(foundGenre.name);
+            }
+          });
+        }
+      );
+    }
+    return genreLabels;
   }
 
   private initGenres(): void {

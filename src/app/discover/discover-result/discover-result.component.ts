@@ -30,16 +30,7 @@ export class DiscoverResultComponent {
   }
 
   public getGenres(genres: Array<number>): Array<string> {
-    const genreLabels: Array<string> = [];
-    this.tmdb.genres.subscribe(
-      (genresEl: Array<Genre>) => {
-        genres.forEach((genre: number) => {
-          const foundGenre: Genre = genresEl.find((genreEl: Genre) => genreEl.id === genre);
-          genreLabels.push(foundGenre.name);
-        });
-      }
-    );
-    return genreLabels;
+    return this.tmdb.getGenreLabels(genres);
   }
 
 }

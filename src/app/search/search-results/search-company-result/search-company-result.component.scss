@@ -1,0 +1,24 @@
+$tmdb_green: #01d277;
+$border: #e6e6e6;
+#Search_Company_result {
+  padding: 10px 0;
+  position: relative;
+  &::before {
+    content: "";
+    border-top: 1px solid $border;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  .poster {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: $tmdb_green;
+    display: block;
+  }
+}

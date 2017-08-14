@@ -1,0 +1,19 @@
+<section id="Search_People_result">
+  <div *ngIf="result.media_type" class="media-type">
+    <span><i class="fa fw fa-user"></i> {{ result.media_type | titlecase }}</span>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <img class="poster" [src]="getImage(result.profile_path)" onerror="this.onerror=null;this.src='assets/images/not_found_person_w154.png';">
+    </div>
+    <div class="col-10">
+      <span *ngIf="result.name" class="title" appHighlight [search]="query" [text]="result.name" [classToApply]="'title-highlight'"></span>
+      <div *ngIf="result.known_for && result.known_for.length" class="known-for-container">
+        <div class="known-for-text">Known for:</div>
+        <div *ngFor="let item of result.known_for" class="known-for">
+          <img class="known-for-poster" [src]="getImage(item.poster_path)" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

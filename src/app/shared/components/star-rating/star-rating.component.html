@@ -1,0 +1,7 @@
+<section id="Star_rating">
+  <div *ngFor="let star of starModel" class="star">
+      <i *ngIf="star === 1" class="fa fw fa-star"></i>
+      <i *ngIf="star === 0.5" class="fa fa-fw fa-star-half-full"></i>
+      <i *ngIf="star === 0" class="fa fw fa-star-o"></i>
+  </div>
+</section>

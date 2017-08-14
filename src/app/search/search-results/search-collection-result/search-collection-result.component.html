@@ -1,0 +1,10 @@
+<section id="Search_Collection_result">
+  <div class="row">
+    <div class="col-2">
+      <img class="poster" [src]="getImage(result.poster_path)" onerror="this.onerror=null;this.src='assets/images/not_found_person_w154.png';">
+    </div>
+    <div class="col-10">
+      <span *ngIf="result.name" class="title" appHighlight [search]="query" [text]="result.name" [classToApply]="'title-highlight'"></span>
+    </div>
+  </div>
+</section>

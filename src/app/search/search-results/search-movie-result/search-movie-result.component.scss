@@ -1,0 +1,72 @@
+$tmdb_green: #01d277;
+$overview-bg: #f7f7f7;
+$border: #e6e6e6;
+$show-all: #8f8f8f;
+$show-all-hover: #616161;
+#Search_Movie_result {
+  padding: 10px 0;
+  position: relative;
+  &::before {
+    content: "";
+    border-top: 1px solid $border;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  .media-type {
+    position: absolute;
+    top: -8px;
+    background-color: $overview-bg;
+    font-size: 10px;
+    padding: 0 10px;
+    border: 1px solid $border;
+    border-radius: 2px;
+  }
+  .poster {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: $tmdb_green;
+    display: block;
+  }
+  .date {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    vertical-align: top;
+  }
+  .overview-container {
+    font-weight: 400;
+    font-size: 15px;
+    margin: 10px 0;
+    .overview-text {
+      font-weight: 300;
+      display: block;
+      background-color: $overview-bg
+    }
+    .show-all {
+      text-align: center;
+      display: block;
+      border-top: 1px solid $border;
+      cursor: pointer;
+      color: $show-all;
+      &:hover {
+          color: $show-all-hover;
+          border-top: 1px solid $show-all;
+      }
+    }
+  }
+  .detail-block {
+    display: block;
+  }
+  .vote-counts .fa-heart {
+      color: $tmdb_green;   
+  }
+  .genre {
+    margin-right: 2px;
+  }
+}
