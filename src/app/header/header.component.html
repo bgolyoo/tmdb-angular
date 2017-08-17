@@ -1,0 +1,10 @@
+<section id="Header">
+  <div class="container">
+    <img class="logo" src="/assets/images/powered-by-rectangle-green.svg" onerror="this.src='/assets/images/293x302-powered-by-square-green'">
+    <ul>
+      <li *ngIf="isApiKeySet()" routerLinkActive="active">
+        <a routerLink='/discover'>Discover</a>
+      </li>
+    </ul>
+  </div>
+</section>

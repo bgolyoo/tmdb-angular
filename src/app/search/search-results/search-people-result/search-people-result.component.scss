@@ -1,0 +1,51 @@
+$tmdb_green: #01d277;
+$overview-bg: #f7f7f7;
+$border: #e6e6e6;
+$show-all: #8f8f8f;
+$show-all-hover: #616161;
+#Search_People_result {
+  padding: 10px 0;
+  position: relative;
+  &::before {
+    content: "";
+    border-top: 1px solid $border;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  .media-type {
+    position: absolute;
+    top: -8px;
+    background-color: $overview-bg;
+    font-size: 10px;
+    padding: 0 10px;
+    border: 1px solid $border;
+    border-radius: 2px;
+  }
+  .poster {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: $tmdb_green;
+    display: block;
+  }
+  .known-for-container {
+    margin-top: 10px;
+    .known-for-text {
+      display: block;
+      font-weight: 400;
+      font-size: 15px;
+    }
+    .known-for {
+      display: inline-block;
+      .known-for-poster {
+        height: 150px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+$star-fg: #01d277;
+#Star_rating {
+  display: inline-block;
+  white-space: nowrap;
+  .star {
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 2px;
+    color: $star-fg;
+  }
+}

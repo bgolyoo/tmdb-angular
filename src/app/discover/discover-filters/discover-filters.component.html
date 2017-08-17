@@ -1,0 +1,64 @@
+<section id="Filters">
+  <form [formGroup]="filterForm">
+    <div class="row">
+      <div class="col">
+        <label for="sort_by">Sort by</label>
+        <select id="sort_by" class="form-control" formControlName="sort_by">
+          <option *ngFor="let sortby of getSortByValues()">{{ sortby }}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="vote_average_min">Average vote</label>
+        <div class="row">
+          <div class="col">
+            <input 
+              type="text" 
+              id="vote_average_min" 
+              class="form-control" 
+              formControlName="vote_average.gte"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col">
+            <input 
+              type="text" 
+              id="vote_average_max" 
+              class="form-control" 
+              formControlName="vote_average.lte"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="release_date_min">Release date</label>
+        <div class="row">
+          <div class="col">
+            <input 
+              type="text" 
+              id="release_date_min" 
+              class="form-control" 
+              formControlName="release_date.gte"
+              autocomplete="off"
+            />
+          </div>
+          <div class="col">
+            <input 
+              type="text" 
+              id="release_date_max" 
+              class="form-control" 
+              formControlName="release_date.lte"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="genre">Sort by</label>
+        <select id="genre" class="form-control" formControlName="with_genres">
+          <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</section>

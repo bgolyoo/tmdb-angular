@@ -1,0 +1,14 @@
+<section id="Search_results" [class.open]="isResultsOpen">
+  <div class="container">
+    <div *ngFor="let result of results" class="result">
+      <app-search-movie-result *ngIf="isMovie(result)" [result]="result" [query]="query"></app-search-movie-result>
+      <app-search-tv-show-result *ngIf="isTvShow(result)" [result]="result" [query]="query"></app-search-tv-show-result>
+      <app-search-people-result *ngIf="isPeople(result)" [result]="result" [query]="query"></app-search-people-result>
+      <app-search-company-result *ngIf="isCompany(result)" [result]="result" [query]="query"></app-search-company-result>
+      <app-search-collection-result *ngIf="isCollection(result)" [result]="result" [query]="query"></app-search-collection-result>
+    </div>
+    <div *ngIf="results.length && currentPage < totalPages" class="load-more" (click)="loadMoreResults()">
+      <span class="load-more-text">Load more</span>
+    </div>
+  </div>
+</section>

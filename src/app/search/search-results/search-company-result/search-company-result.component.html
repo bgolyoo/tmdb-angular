@@ -1,0 +1,7 @@
+<section id="Search_Company_result">
+  <div class="row">
+    <div class="col-12">
+      <span *ngIf="result.name" class="title" appHighlight [search]="query" [text]="result.name" [classToApply]="'title-highlight'"></span>
+    </div>
+  </div>
+</section>

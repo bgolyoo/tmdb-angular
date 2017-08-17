@@ -1,0 +1,72 @@
+$bg-color: #f4f4f4;
+$bg-color-light: #fefefe;
+$bg-color-dark: #e5e5e5;
+#Search {
+  width: 100%;
+  height: 42px;
+  background-color: $bg-color-light;
+  .input-container {
+    width: 100%;
+    padding-right: 0;
+    transition: padding-right 0.15s ease-out;
+    -moz-transition: padding-right 0.15s ease-out;
+    -o-transition: padding-right 0.15s ease-out;
+    -webkit-transition: padding-right 0.15s ease-out;
+    &.valid {
+      padding-right: 40px;
+      transition: padding-right 0.25s ease-in;
+      -moz-transition: padding-right 0.25s ease-in;
+      -o-transition: padding-right 0.25s ease-in;
+      -webkit-transition: padding-right 0.25s ease-in;
+    }
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding: 0 20px 0 10px;
+      margin: 6px;
+      height: 30px;
+      background-color: $bg-color;
+      &:focus {
+        background-color: $bg-color-dark;
+      }
+    }
+  }
+  .fa-search,
+  .fa-close,
+  .fa-angle-double-down,
+  .fa-angle-double-up {
+    position: absolute;
+    top: 0;
+    font-size: 16px;
+    margin: 13px 0;
+  }
+  .fa-close,
+  .fa-angle-double-down,
+  .fa-angle-double-up {
+    cursor: pointer;
+  }
+  .fa-search {
+    left: 0;
+  }
+  .fa-close {
+    right: 5px;
+  }
+  .fa-angle-double-down,
+  .fa-angle-double-up {
+    right: 30px
+  }
+  div,
+  form {
+    height: 100%;
+  }
+  .select-container::before {
+    content: "";
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 6px;
+    height: 32px;
+    margin: 5px 0;
+  }
+}

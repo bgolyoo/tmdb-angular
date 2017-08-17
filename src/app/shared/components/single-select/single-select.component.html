@@ -1,0 +1,12 @@
+<section id="Single_select" appOutsideClick (clickOutside)="closeDropdown()">
+  <div class="select-body" [class.active]="isDropdownOpen" (click)="toggleDropdown()">
+    <span class="select-body-text">{{ selectedOption }} <i [ngClass]="{'fa fa-fw': true, 'fa-angle-down': !isDropdownOpen, 'fa-angle-up': isDropdownOpen}"></i></span>
+  </div>
+  <div *ngIf="selectOptions && selectOptions.length" class="select-dropdown" [class.open]="isDropdownOpen">
+    <ul>
+      <li *ngFor="let option of selectOptions" (click)="select(option)">
+        <span class="select-option-text">{{ option }}</span>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+#Header {
+  display: flex;
+  width: 100%;
+  background-color: #081c24;
+  .logo {
+    height: 50px;
+    margin: 4px 30px 4px 0;
+  }
+  ul {
+    list-style: none;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 400;
+      &.active a {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-bottom: #01d277 5px solid;
+      }
+      a {
+        color: #01d277;
+        text-decoration: none;
+        padding: 15px 5px;
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #Header {
+    .container {
+      width: 100%;
+    }
+  }
+}

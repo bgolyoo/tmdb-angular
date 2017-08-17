@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #545454;
+  input[type='text'] {
+    font-family: 'Quicksand', sans-serif;
+    &::-webkit-input-placeholder {
+      font-family: 'Quicksand', sans-serif;
+    }
+    &::-moz-placeholder {
+      font-family: 'Quicksand', sans-serif;
+    }
+    &:-ms-input-placeholder {
+      font-family: 'Quicksand', sans-serif;
+    }
+    &:-moz-placeholder {
+      font-family: 'Quicksand', sans-serif;
+    }
+  }
+}
+
+#Search_results {
+  .title-highlight {
+    font-weight: 700;
+  }
+}

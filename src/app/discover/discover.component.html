@@ -1,0 +1,14 @@
+<section id="Discover">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <app-discover-filters (filterChanged)="onFilterChange($event)"></app-discover-filters>
+      </div>
+    </div>
+    <div *ngIf="response" class="row">
+      <div *ngFor="let result of response.results" class="col-12 col-sm-12 col-md-12 col-lg-6">
+        <app-discover-result [result]="result"></app-discover-result>
+      </div>
+    </div>
+  </div>
+</section>

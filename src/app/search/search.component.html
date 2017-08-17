@@ -1,0 +1,23 @@
+<section id="Search">
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        <i class="fa fw fa-search"></i>
+        <form [formGroup]="searchForm">
+          <div class="input-container" [class.valid]="searchForm.get('query').valid">
+            <input type="text" [placeholder]="getPlaceholder(searchType)" formControlName="query" autocomplete="off">
+          </div>
+        </form>
+        <i *ngIf="isResultsOpen !== undefined && results.length" [ngClass]="{'fa fw': true, 'fa-angle-double-down': !isResultsOpen, 'fa-angle-double-up': isResultsOpen}"
+          (click)="toggleResults()"></i>
+        <i *ngIf="searchForm.get('query').valid" class="fa fw fa-close" (click)="clearSearch()"></i>
+      </div>
+      <div class="col-3">
+        <div class="select-container">
+          <app-single-select [(ngModel)]="searchType" [options]="getSearchTypes()"></app-single-select>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-search-results [query]="searchForm.get('query').value" [results]="results" [isResultsOpen]="isResultsOpen" [searchType]="searchType" [currentPage]="searchForm.get('page').value" [totalPages]="totalPages" (loadMore)="loadMore()"></app-search-results>
