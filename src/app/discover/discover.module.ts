@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiscoverComponent } from './discover.component';
 import { DiscoverRoutingModule } from './discover-routing.module';
-import { DiscoverResultComponent } from './discover-result/discover-result.component';
-import { DiscoverFiltersComponent } from './discover-filters/discover-filters.component';
+import { DiscoverResultsModule } from './discover-result/discover-result.module';
+import { DiscoverFiltersModule } from './discover-filters/discover-filters.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DiscoverRoutingModule
+    DiscoverRoutingModule,
+    DiscoverFiltersModule,
+    DiscoverResultsModule
   ],
   declarations: [
-    DiscoverComponent,
-    DiscoverResultComponent,
-    DiscoverFiltersComponent
+    DiscoverComponent
   ]
 })
 export class DiscoverModule { }

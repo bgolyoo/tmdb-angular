@@ -133,11 +133,13 @@ export class TmdbService {
   }
 
   private initGenres(): void {
-    this.getGenres().take(1).subscribe(
-      (resp: { genres: Array<Genre> }) => {
-        this._genres.next(resp.genres);
-      }
-    );
+    if (this.as.apiKey) {
+      this.getGenres().take(1).subscribe(
+        (resp: { genres: Array<Genre> }) => {
+          this._genres.next(resp.genres);
+        }
+      );
+    }
   }
 
 }

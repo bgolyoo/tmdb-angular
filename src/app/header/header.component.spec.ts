@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { ApiKeyService } from '../shared/services/api-key/api-key.service';
+import { TmdbService } from '../shared/services/tmdb/tmdb.service';
+import { SearchService } from '../shared/services/tmdb/search/search.service';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -8,7 +11,15 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      imports: [
+        RouterTestingModule
+      ],
+      declarations: [ HeaderComponent ],
+      providers: [
+        TmdbService,
+        ApiKeyService,
+        SearchService
+      ]
     })
     .compileComponents();
   }));
